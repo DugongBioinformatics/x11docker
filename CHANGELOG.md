@@ -198,7 +198,7 @@
 #### Date: 2018-01-13
  - **bugfix** xpra: reconnect to server after timeout (60s) if switching to console
 
-##Version: 3.9.1.4
+## Version: 3.9.1.4
 #### Date: 2018-01-12
  - `--help`: some usage updates
  - `--xorg`: create virtual framebuffer if no monitor is connected (headless server setup)
@@ -549,7 +549,7 @@
 #### Date: 2017-05-22
  - `--volume`: **new option** to share host folders
 
-##Version: 3.5.1
+## Version: 3.5.1
 #### Date: 2017-05-19
  - user creation with ``--addgroup` video` to support pre-systemd and kdeneon gpu support
  - create /tmp/.X11-unix with 1777
@@ -678,7 +678,7 @@
 #### Date: 2017-04-18
  - `--nxagent` sets right keyboard layout, thanks to Ulrich!
 
-##Version: 3.1.1
+## Version: 3.1.1
 #### Date: 2017-04-18
  - `--nxagent` now supports `--size`, `--fullscreen` and `--clipboard`, thanks to Ulrich Sibiller from Arctica!
  - check dpi from host and set this to new X server
