@@ -8,12 +8,12 @@
 ## Version: 3.9.8.4  
 #### Date: 2018-04-04
  - `--workdir`: **new option**
- - `--systemd`/`--dbus`-system: changed su command to remove sh from pstree
+ - `--systemd`/`--dbus-system`: changed su command to remove sh from pstree
  - **bugfix** user entry in /etc/group
 
 ## Version: 3.9.8.3  
 #### Date: 2018-04-04
- - **bugfix** `--dbus`-system: **regression**: must not set no-new-privileges
+ - **bugfix** `--dbus-system`: **regression**: must not set no-new-privileges
 
 ## Version: 3.9.8.2  
 #### Date: 2018-04-03
@@ -22,7 +22,7 @@
 ## Version: 3.9.8.1  
 #### Date: 2018-04-03
  - show container ID on stdout ([#36](https://github.com/mviereck/x11docker/issues/36))
- - `--security`-opt=no-new-privileges now always set except for `--sudouser`. It does not harm switching from root to less privileged users.
+ - `--security-opt=no-new-privileges` now always set except for `--sudouser`. It does not harm switching from root to less privileged users.
  - setup script with user switching: "exec su" instead of "su" to avoid root shell in parent tree. su is now child of init.
 
 ## Version: 3.9.8.0  
@@ -47,11 +47,11 @@
 #### Date: 2018-03-30
  - mount X socket and lockfile read-only to protect from /tmp cleanup of init systems
  - minor improvements of init system initialization
- - remove checks for `--userns`-remap and `--selinux`-enabled. [#33](https://github.com/mviereck/x11docker/issues/33)
+ - remove checks for `--userns-remap` and `--selinux-enabled`. [#33](https://github.com/mviereck/x11docker/issues/33)
 
 ## Version: 3.9.7.5  
 #### Date: 2018-03-30
- - `--dbus`-system: drop consolekit
+ - `--dbus-system`: drop consolekit
  - `--sysvinit`,`--openrc`: disable getty in inittab instead of overwriting inittab with shared volume
  - `--sysvinit`: change rc.local in setupscript instead of overwriting it with shared volume
  - `--openrc`, `--runit`: create service in setupscript, drop some more capabilities
@@ -72,7 +72,7 @@
  - `--wm`: fall back to autodetection if specified window manager not found
  - **bugfix** `--env`: regard whitespace. Still need to handle special chars like"\`$.
  - `--add`: **new option** to add a host command in xinitrc
- - consolekit: enable and use automatically for `--dbus`-system, `--openrc`, `--runit`
+ - consolekit: enable and use automatically for `--dbus-system`, `--openrc`, `--runit`
  - `--dbus`: enable automatically for `--runit`, `--openrc`
  - mywatch(): watch again, now without sh -c
  - `--debug`: **new option** to set -x in all scripts showing code lines while executed.
@@ -81,7 +81,7 @@
 
 ## Version: 3.9.7.1  
 #### Date: 2018-03-16
- - **bugfix** alpine images: /etc/shadow entry must be /bin/sh, `--dbus`-system -with su fails with /bin/bash
+ - **bugfix** alpine images: /etc/shadow entry must be /bin/sh, `--dbus-system` -with su fails with /bin/bash
  - **bugfix** openSUSE: finish(): replace bc with bash-only calculation, bc misses on openSUSE
 
 ## Version: 3.9.7    
@@ -120,14 +120,14 @@
 ## Version: 3.9.4.0  
 #### Date: 2018-03-05
  - `--pulseaudio` `--hostnet`: no fallback to alsa, use localhost IP instead
- - `--pulseaudio` `--no`-internet: fallback to `--alsa`
+ - `--pulseaudio` `--no-internet`: fallback to `--alsa`
  - clean up error message on docker startup failure, remove multiple error lines
  - `--systemd`: **bugfix**: terminate x11docker if systemd startup fails
  - stdout and stderr of image command outsourced of docker.log
  - docker log -f > docker.log to get output in detached mode
- - `--sys`-admin: no longer deprecated, needed for debian 9 images (but not debian 10).
+ - `--sys-admin`: no longer deprecated, needed for debian 9 images (but not debian 10).
  - `--net` and `--ipc` changed to `--hostnet` and `--hostipc`
- - `--dbus`-daemon changed to `--dbus`-system
+ - `--dbus-daemon` changed to `--dbus-system`
  - `--auto` `--gpu`: fallback to `--hostdisplay` for seamless mode if xpra and weston not found ([#23](https://github.com/mviereck/x11docker/issues/23))
  - [#24](https://github.com/mviereck/x11docker/issues/24) mount /dev/dri and /dev/snd not only with `--device`, but also `--volume` to keep ownership+group
  - `--hostdisplay`: minor **bugfix**: Use correct display number to share /tmp/.X0-lock, only share if it exists
@@ -135,7 +135,7 @@
 
 ## Version: 3.9.3.2  
 #### Date: 2018-03-01
- - `--no`-xtest: disable extension XTEST. Default for most options.
+ - `--no-xtest`: disable extension XTEST. Default for most options.
  - openSUSE docker package misses init binary, show warnings for `--tini`, issue [#23](https://github.com/mviereck/x11docker/issues/23)
 
 ## Version: 3.9.3.1  
@@ -144,7 +144,7 @@
 
 ## Version: 3.9.3    
 #### Date: 2018-03-01
- - `--tini`: show warning for outdated docker versions without option `--init` and fall back to `--no`-init, issue [#23](https://github.com/mviereck/x11docker/issues/23)
+ - `--tini`: show warning for outdated docker versions without option `--init` and fall back to `--no-init`, issue [#23](https://github.com/mviereck/x11docker/issues/23)
  - `--xtest`: **new option** to enable X extension XTEST. Default for `--xdummy`, `--xvfb`, `--xpra`
  - `--pulseaudio` with `--net`: fallback to `--alsa`, disabling `--pulseaudio`
 
@@ -209,7 +209,7 @@
 
 ## Version: 3.9.1.3  
 #### Date: 2018-01-04
- - `--dbus`-daemon: set xhost +SI:localuser:$USER, needed for deepin
+ - `--dbus-daemon`: set xhost +SI:localuser:$USER, needed for deepin
  - **bugfix** `--systemd`: global XAUTHORITY setting was wrong, removed at all
  - faster startup of pulseaudio, no sleep 1
  - **bugfix**: pull terminal did not appear if running from terminal
@@ -233,14 +233,14 @@
  - `--dbusdaemon`: dropped consolekit, not really useful
  - `--dbusdaemon`: switch only for  `--tini`/`--none`. Always run daemon for `--systemd` `--openrc` `--runit`
  - `--systemd`: create /sys/fs/cgroup/systemd if missing on host
- - `--sys`-admin: deprecated thanks to `--tmpfs=`/run/lock
+ - `--sys-admin`: deprecated thanks to `--tmpfs=`/run/lock
  - containersetup.sh collects most former `docker exec` commands from dockerrc
 
 ## Version: 3.9.0.5  
 #### Date: 2017-12-21
  - add capability DAC_OVERRIDE if user switching is allowed -> needed to change /etc/sudoers if ro
  - **bugfix**: only create XDG_RUNTIME_DIR if not already existing
- - `--systemd`: adding `--tmpfs=`/run/lock allows to drop `--sys`-admin !
+ - `--systemd`: adding `--tmpfs=`/run/lock allows to drop `--sys-admin` !
 
 ## Version: 3.9.0.4  
 #### Date: 2017-12-20
@@ -254,7 +254,7 @@
 ## Version: 3.9.0.3  
 #### Date: 2017-12-17
  - switched back to /tmp/fakehome to avoid CHOWN and issues with `--sharedir`
- - drop `--cap`-add CHOWN
+ - drop `--cap-add` CHOWN
  - **bugfix** `--sudouser`, failed to start
  - `--sharedir`: without `--home`[dir], create softlinks to /tmp/fakehome
  - `--home`: avoid conflict with `--sharedir=`$HOME, mount as $HOME/$(basename $HOME)
@@ -265,7 +265,7 @@
 ## Version: 3.9.0.2  
 #### Date: 2017-12-16
  - /etc/sudoers[.d/]: replace completly to avoid possible evil image setups
- - `--cap`-add CHOWN as default to allow /home/$Benutzer with `--sharedir`
+ - `--cap-add` CHOWN as default to allow /home/$Benutzer with `--sharedir`
 
 ## Version: 3.9.0.1  
 #### Date: 2017-12-16
@@ -299,7 +299,7 @@
  - `--sharecgroup`: **new option** to share /sys/fs/cgroup. default for `--systemd`.
  - create /var/lib/dbus in dockerrc to avoid dbus errors with init systems
  - show image name and display in weston windows
- - **bugfix** `--runit`: add SYS_BOOT even with `--cap`-default
+ - **bugfix** `--runit`: add SYS_BOOT even with `--cap-default`
 
 ## Version: 3.8.0    
 #### Date: 2017-12-04
@@ -309,9 +309,9 @@
  - createuser.sh: check for useradd, if missing use adduser (fits fedora and alpine/busybox as well)
  - `--runit`: **new option** for init system runit
  - `--init`: **new option** for init system tini (default now, docker run option `--init`)
- - `--no`-init: **new option** to run image command as PID 1 (has been default before x11docker 3.8)
- - `--sys`-admin: **new option** for `--cap`-add=SYS_ADMIN. Needed for systemd in debian based images.
- - `--sudouser`, `--systemd`: set needed capabilities only instead of `--cap`-default
+ - `--no-init`: **new option** to run image command as PID 1 (has been default before x11docker 3.8)
+ - `--sys-admin`: **new option** for `--cap-add=`SYS_ADMIN. Needed for systemd in debian based images.
+ - `--sudouser`, `--systemd`: set needed capabilities only instead of `--cap-default`
  - `--xpra` `--hostuser`: create /run/user/$Hostuseruid if missing
  - $Sharefolder/stdout+sterr: chmod 666 to allow access with `--user`
  - container user password: x11docker (creating volume /etc/shadow)
@@ -359,15 +359,15 @@
 
 ## Version: 3.7.0    
 #### Date: 2017-10-30
- - auto-choose window manager in `--xephyr`/`--xorg`/`--weston`-xwayland/`--kwin`-xwayland/`--xwayland` except `--desktop` is set
+ - auto-choose window manager in `--xephyr`/`--xorg`/`--weston-xwayland`/`--kwin-xwayland`/`--xwayland` except `--desktop` is set
  - `--alsa`: **new option** for ALSA sound
  - changed content of variable $Xserver to X server option names itself
- - `--kwin`-xwayland: set keyboard layout
- - `--kwin`-native: deprecated, too much trouble, but less use
+ - `--kwin-xwayland`: set keyboard layout
+ - `--kwin-native`: deprecated, too much trouble, but less use
  - extended terminal list for password prompt/docker pull
  - `--xhost`: always disabling with no_xhost(), afterwards setting `--xhost`
- - **bugfix** `--weston`/`--weston`-xwayland: set backend in compositor command, weston`s autodetection can fail
- - **bugfix** `--kwin`/`--kwin`-xwayland: set backend in compositor command, weston`s autodetection can fail
+ - **bugfix** `--weston`/`--weston-xwayland`: set backend in compositor command, weston`s autodetection can fail
+ - **bugfix** `--kwin`/`--kwin-xwayland`: set backend in compositor command, weston`s autodetection can fail
  - new function alertbox, outsourced from error(). yad, kaptain, kdialog, gxmessage, xterm: additional messagebox tools
 
 ## Version: 3.6.3.9  
@@ -418,7 +418,7 @@
 
 ## Version: 3.6.3    
 #### Date: 2017-10-20
- - **new option** `--no`-internet; adjustments for CentOS/RHEL, Arch and Manjaro
+ - **new option** `--no-internet`; adjustments for CentOS/RHEL, Arch and Manjaro
 
 ## Version: 3.6.2    
 #### Date: 2017-10-10
@@ -441,7 +441,7 @@
  - replaced sed in xauth cookie creation, sed fails in openSUSE (!?)
  - `--rw`: **new option** to allow read/write access to container root file system
  - check for xpra `--dpi` bug in 2.1 series
- - xpra `--start`-via-proxy=no for xpra >= 2.1
+ - xpra `--start-via-proxy=no` for xpra >= 2.1
  - `--nxagent`: temporary xhost +SI:localuser:$Hostuser workaround as it fails again to authenticate, not dividing between XAUTHORITY and `--auth`
  - `--pw`: **new option** to choose password prompt frontend. default: pkexec
  - reduce dependency warnings for `--auto`
@@ -456,10 +456,10 @@
  - `--showenv` for `--xonly`
  - finish(): docker stop $Containername
  - dockerrc: no ps/sleep loop if running as root
- - `--no`-entrypoint: **New option** to disable ENTRYPOINT in image
+ - `--no-entrypoint`: **New option** to disable ENTRYPOINT in image
  - `--root`: deprecated. Can be achieved with `--hostuser=root`
  - `--hostuser`: **New option** to set host user different from  $(logname)
- - check if docker can run without password to make `--no`-password needless
+ - check if docker can run without password to make `--no-password` needless
  - don`t start docker in xinitrc as xinit runs unprivileged
  - `--ps` keeps cache files, too (formerly container only)
  - `--desktop`: no longer deprecated, easier to understand and remember than `--wm=none`
@@ -483,15 +483,15 @@
  - `--user`: **bugfix** parsing custom gid, gid was set to username
  - `--home` with `--user=`(unknown): only show warning (instead of error) not creating persistent home
  - do not set write permissions on `--home` or `--homedir` folder for different users than $USER or `--user`. (Not x11docker`s job)
- - do not set `--read`-only if `--user=`0
+ - do not set `--read-only` if `--user=`0
  - minor **bugfix**: chown x11docker_CMD to host user to avoid permission issues in $Sharefolder
 
 ## Version: 3.5.8    
 #### Date: 2017-06-07
  - `--nxagent`: **bugfix** due to update? must set nxagent -ac (=xhost +) temporary to allow xinit
- - `--kwin`-native: always share Wayland (`--sharewayland` `--waylandenv` `--dbus`)
- - minor **bugfix**: allow `--wm` for `--kwin`-xwayland
- - docker run "`--read`-only `--volume=`/tmp" to restrict container filesystem as read-only (except for `--sudouser`)
+ - `--kwin-native`: always share Wayland (`--sharewayland` `--waylandenv` `--dbus`)
+ - minor **bugfix**: allow `--wm` for `--kwin-xwayland`
+ - docker run "`--read-only` `--volume=`/tmp" to restrict container filesystem as read-only (except for `--sudouser`)
  - `--xorg` supports `--rotate`. (Xephyr could, but crashes -> Xephyr bug. Nxagent, Xdummy, Xvfb and Xwayland refuse this.)
  - `--xhost` STR: **new option** to specify "xhost STR". Deprecated: `--xhost`+
  - `--xvfb`: **new option** to explicitly use Xvfb and to clearly use Xdummy on `--xdummy`
@@ -520,12 +520,12 @@
  - minor **bugfix**: avoid pointless warning about XTEST if not using xpra
  - shorter sleep in finish()
  - don`t search for deprecated /tmp/x11docker in checkorphaned()
- - **bugfix** typo preventing start of `--kwin` and `--kwin`-native (-width instead of `--width`)
- - warning with hint to use `--xpra`-xwayland if `--scale` is used with `--weston`-xwayland.
+ - **bugfix** typo preventing start of `--kwin` and `--kwin-native` (-width instead of `--width`)
+ - warning with hint to use `--xpra-xwayland` if `--scale` is used with `--weston-xwayland`.
 
 ## Version: 3.5.5.2  
 #### Date: 2017-06-10
- - update usage info for `--xpra` and `--xpra`-xwayland
+ - update usage info for `--xpra` and `--xpra-xwayland`
 
 ## Version: 3.5.5.1  
 #### Date: 2017-06-10
@@ -552,7 +552,7 @@
  - mount $Sharefolder and its content read-only
  - remove X11-unix from $Sharefolder
  - set read-only for /dev/dri on `--gpu`
- - `--security`-opt=no-new-privileges added to docker run
+ - `--security-opt=no-new-privileges` added to docker run
 
 ## Version: 3.5.2    
 #### Date: 2017-05-22
@@ -565,35 +565,35 @@
 
 ## Version: 3.5.0    
 #### Date: 2017-05-17
- - avoid Terminal window with `--no`-password
+ - avoid Terminal window with `--no-password`
  - `--env`: regard whitespaces, use \n to divide entrys
  - set mode=preferred for Weston on tty, ignore $Screensize
  - extension XINERAMA disabled as multiple Xephyr outputs cannot handle it well
  - create container home folder /tmp/fakehome in x11docker_CMD (avoids ownership problems with wine, and is less messy in /tmp)
  - more failure checks in installer()
- - check for `--userns`-remap, disabling it with `--userns=host` if `--home` or `--homedir` are set
+ - check for `--userns-remap`, disabling it with `--userns=host` if `--home` or `--homedir` are set
  - minor exploit check for DISPLAY XAUTHORITY XDG_RUNTIME_DIR WAYLAND_DISPLAY HOME
- - `--output`-count: **new option** to set amount if virtual screens/desktop windows for Weston, Kwin, Xephyr
- - `--westonini`: **new option** to specify a custom weston.ini for `--weston` and `--weston`-xwayland
+ - `--output-count`: **new option** to set amount if virtual screens/desktop windows for Weston, Kwin, Xephyr
+ - `--westonini`: **new option** to specify a custom weston.ini for `--weston` and `--weston-xwayland`
  - **bugfix**: -s KILL for weston on finish avoids zombies
  - `--cachedir`: **new option**: specify custom cache folder
  - `--homedir`: **new option**: specify host folder to share as home
  - automatically choose trusted or untrusted cookies
- - `--trusted`: **new option**: enforce trusted cookies for `--hostdisplay` and `--kwin`-native
+ - `--trusted`: **new option**: enforce trusted cookies for `--hostdisplay` and `--kwin-native`
  - `--cache` deprecated
- - `--cap`-default: Allow docker default capabilities
+ - `--cap-default`: Allow docker default capabilities
  - `--orphaned` cleans /tmp/x11docker
  - show docker log in xtermrc if pulling image
- - `docker run `--cap`-drop=ALL` as default
+ - `docker run `--cap-drop=`ALL` as default
  - `--user`: **new option** to set user to use (name or uid, non-existing uids possible. default: host user)
  - reduce /etc/passwd and /etc/group to container user and groups user and videp only (except root, keeps whole files).
  - creating container user similar to host user with docker run option `--user` and custom /etc/passwd instead of script createuser.
- - dismissed `--hostuser` `--sudouser`, effect of `--hostuser` is default now, `--sudouser` not possible due to `--cap`-drop=ALL
+ - dismissed `--hostuser` `--sudouser`, effect of `--hostuser` is default now, `--sudouser` not possible due to `--cap-drop=`ALL
  - `--gpu`: only share `--device=`/dev/dri instead of listing all files in it
 
 ## Version: 3.2.1    
 #### Date: 2017-05-05
- - minor **bugfix**: `--scale` with `--xpra`-xwayland under X without Wayland failed
+ - minor **bugfix**: `--scale` with `--xpra-xwayland` under X without Wayland failed
 
 ## Version: 3.2.0    
 #### Date: 2017-05-04
@@ -606,13 +606,13 @@
 
 ## Version: 3.1.16   
 #### Date: 2017-05-03
- - **bugfix** `--xpra`-wayland in check for WAYLAND_DISPLAY
+ - **bugfix** `--xpra-wayland` in check for WAYLAND_DISPLAY
 
 ## Version: 3.1.15   
 #### Date: 2017-05-02
  - minor **bugfix** in choosing terminal, replace $Waylandterminal with $Terminal in re-check
  - minor **bugfix** xtermrc and xinitrc: check if $Dockerpidfile is not empty
- - faster startup for `--xpra`-xwayland, `--weston`-xwayland, `--kwin` and `--kwin`-xwayland
+ - faster startup for `--xpra-xwayland`, `--weston-xwayland`, `--kwin` and `--kwin-xwayland`
  - code cleanup
 
 ## Version: 3.1.14   
@@ -633,7 +633,7 @@
 #### Date: 2017-04-29
  - clean up confusion with x11docker.log
  - minor **bugfix**: include warning() in xinitrc
- - **bugfix** in xinitrc for `--no`-xhost
+ - **bugfix** in xinitrc for `--no-xhost`
  - don`t share $Xclientcookie as $Sharefolder is already shared
  - don`t use $Cacherootfolder for parsererror
  - hint to use `--sudo` on some systems
@@ -648,7 +648,7 @@
 #### Date: 2017-04-28
  - minor **bugfix**: check for xenial instead of 16.04/xvfb
  - **regression** fix: set XPRA_XSHM=0 on Shareipc=no
- - disable `--desktop`-scaling in xpra, not supported before xpra v1.x
+ - disable `--desktop-scaling` in xpra, not supported before xpra v1.x
 
 ## Version: 3.1.9    
 #### Date: 2017-04-27
@@ -705,7 +705,7 @@
  - second stderr &3 to show warnings and errors also from within xinitrc and xtermrc
  - error messages on docker startup failure in xtermrc
  - `--xhost` changed to `--xhost`+, affects new X server only
- - `--kwin` und `--kwin`-wayland: new X server / wayland options
+ - `--kwin` und `--kwin-wayland`: new X server / wayland options
  - xdummy.conf or `--xpra`: custom modeline setting fittung to actual resolution
  - `--xdummy` regards `--size`
  - x11docker_CMD checks if ps is available
@@ -719,10 +719,10 @@
  - use prefix unix for DISPLAY to disable MIT_SHM instead using other environment variables
  - `--virtualgl` dismissed
  - `--dockerenv` dismissed
- - `--xpra`-image `--xorg`-image `--xdummy`-image dismissed
+ - `--xpra-image` `--xorg-image` `--xdummy-image` dismissed
  - `--tcp` `--tcpxsocket` `--xsocket` dismissed
  - `--weston`, `--wayland`: **new option**s for pure Wayland applications
- - `--xpra`-xwayland: new X server option
+ - `--xpra-xwayland`: new X server option
  - create dektop starter with basename instead of $0
  - createuser: start with `--user=`0 to allow useradd and su
  - `--setwaylandenv`: **new option** setting environment variables for toolkits like QT and GTK to use wayland
@@ -734,4 +734,4 @@
  - Newdisplaynumber for xorg starts with 8, Newxvt not added 7
  - xinitrc: XPRA_OPENGL_DOUBLE_BUFFERED=1 to avoid xpra bug 1469
  - check and set $XDG_RUNTIME_DIR for weston and Xwayland
- - `--weston`-xwayland and `--xwayland`: new X server options
+ - `--weston-xwayland` and `--xwayland`: new X server options
