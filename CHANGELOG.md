@@ -1,72 +1,72 @@
  - `--env`: set environment variables in docker command, too. Makes them available with `docker exec`, too.
 
-## Version: 3.9.8.5  
+## Version: [3.9.8.5  ](https://github.com/mviereck/x11docker/tree/6227a1eebc5b63df305822896d7360a14440caf4)
 #### Date: 2018-04-05
  - finish() `docker stop` before creating `timetosaygoodbye` for more graceful shutdown [#37](https://github.com/mviereck/x11docker/issues/37)
  - minor **bugfixes** (XAUTHORITY in setup script, User in systemd journal service)
 
-## Version: 3.9.8.4  
+## Version: [3.9.8.4  ](https://github.com/mviereck/x11docker/tree/d74fa2defceb538d8c9e90932d48f23cae0f102b)
 #### Date: 2018-04-04
  - `--workdir`: **new option**
  - `--systemd`/`--dbus-system`: changed su command to remove sh from pstree
  - **bugfix** user entry in /etc/group
 
-## Version: 3.9.8.3  
+## Version: [3.9.8.3  ](https://github.com/mviereck/x11docker/tree/6ce5d2cbd7a14556723a3c8e1163988f2ddda8ce)
 #### Date: 2018-04-04
  - **bugfix** `--dbus-system`: **regression**: must not set no-new-privileges
 
-## Version: 3.9.8.2  
+## Version: [3.9.8.2  ](https://github.com/mviereck/x11docker/tree/a58e6808254ce78eb528010584ff9d7ef9b8aa26)
 #### Date: 2018-04-03
  - disable entrypoint `tini` if x11docker already runs an init system (default: tini from docker).
 
-## Version: 3.9.8.1  
+## Version: [3.9.8.1  ](https://github.com/mviereck/x11docker/tree/75f79c9888beee08ca08c42c5f70feaa0f02cd30)
 #### Date: 2018-04-03
  - show container ID on stdout ([#36](https://github.com/mviereck/x11docker/issues/36))
  - `--security-opt=no-new-privileges` now always set except for `--sudouser`. It does not harm switching from root to less privileged users.
  - setup script with user switching: "exec su" instead of "su" to avoid root shell in parent tree. su is now child of init.
 
-## Version: 3.9.8.0  
+## Version: [3.9.8.0  ](https://github.com/mviereck/x11docker/tree/a4067993a91f39bce145b48406453f786d1707eb)
 #### Date: 2018-04-02
  - Removed Xtermlogfile,  using Dockerlogfile instead. Strange: solved missing output with `--pw` su/sudo, too.
  - Escape special characters in `--env`, ENV and image command. (adresses [#34](https://github.com/mviereck/x11docker/issues/34), too, now solved better)
 
-## Version: 3.9.7.9  
+## Version: [3.9.7.9  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-03-31
  - Store parsed parts of $Imagecommand in `` to allow constructs like:  sh -c "cd /etc ; xterm"
  - **bugfix**: add `--rm` to docker run for environment check
 
-## Version: 3.9.7.8  
+## Version: [3.9.7.8  ](https://github.com/mviereck/x11docker/tree/4d619bfbcae605b25ee93778936245019a8a7020)
 #### Date: 2018-03-31
  - Handle equal signs in container environment defined with ENV ([#34](https://github.com/mviereck/x11docker/issues/34))
 
-## Version: 3.9.7.7  
+## Version: [3.9.7.7  ](https://github.com/mviereck/x11docker/tree/733b8f9b9228d5fa3b167a4771976bcc610ac0de)
 #### Date: 2018-03-31
  - Handle whitespaces in container environment defined with ENV ([#34](https://github.com/mviereck/x11docker/issues/34))
 
-## Version: 3.9.7.6  
+## Version: [3.9.7.6  ](https://github.com/mviereck/x11docker/tree/65305faba992415b8b255a4fac7e89c4417e5a1e)
 #### Date: 2018-03-30
  - mount X socket and lockfile read-only to protect from /tmp cleanup of init systems
  - minor improvements of init system initialization
  - remove checks for `--userns-remap` and `--selinux-enabled`. [#33](https://github.com/mviereck/x11docker/issues/33)
 
-## Version: 3.9.7.5  
+## Version: [3.9.7.5  ](https://github.com/mviereck/x11docker/tree/0f0b138db7c2f3093511fae7583b34bc44db3423)
 #### Date: 2018-03-30
  - `--dbus-system`: drop consolekit
  - `--sysvinit`,`--openrc`: disable getty in inittab instead of overwriting inittab with shared volume
  - `--sysvinit`: change rc.local in setupscript instead of overwriting it with shared volume
  - `--openrc`, `--runit`: create service in setupscript, drop some more capabilities
 
-## Version: 3.9.7.4  
+## Version: [3.9.7.4  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-03-26
  - `--sysvinit`: **new option** for init system SysVinit in container. Tested with devuan.
  - `--pulseaudio`: **bugfix**: need to set env PULSE_SERVER
  - `--runit`: add softlink for X socket in x11docker.CMD.sh for compatibility with runit on debian
 
-## Version: 3.9.7.3  
+## Version: [3.9.7.3  ](https://github.com/mviereck/x11docker/tree/57e34236dca42e05434a304c77f61202d678398a)
 #### Date: 2018-03-21
  - `--pulseaudio`: share XDG_RUNTIME_DIR/pulse instead of connection over tcp
 
-## Version: 3.9.7.2  
+## Version: [3.9.7.2  ](https://github.com/mviereck/x11docker/tree/25201b916159b2f77d6c6188ea875d80004733d1)
 #### Date: 2018-03-20
  - [#30](https://github.com/mviereck/x11docker/issues/30) Fix writeaccess() for user/group names with spaces in it
  - `--wm`: fall back to autodetection if specified window manager not found
@@ -79,12 +79,19 @@
  - `--sharewayland`, `--waylandenv`: deprecated, not needed for anything anymore. `--wayland` does the job.
  - `--help`: usage() cleanup
 
-## Version: 3.9.7.1  
+## Version: [3.9.7.1  ](https://github.com/mviereck/x11docker/tree/4aaa1cf3c9de7b5924a05cd1ace29e60b3903327)
 #### Date: 2018-03-16
  - **bugfix** alpine images: /etc/shadow entry must be /bin/sh, `--dbus-system` -with su fails with /bin/bash
  - **bugfix** openSUSE: finish(): replace bc with bash-only calculation, bc misses on openSUSE
 
-## Version: 3.9.7    
+## Version: [3.9.7    ](https://github.com/mviereck/x11docker/tree/4d619bfbcae605b25ee93778936245019a8a7020
+733b8f9b9228d5fa3b167a4771976bcc610ac0de
+65305faba992415b8b255a4fac7e89c4417e5a1e
+0f0b138db7c2f3093511fae7583b34bc44db3423
+57e34236dca42e05434a304c77f61202d678398a
+25201b916159b2f77d6c6188ea875d80004733d1
+4aaa1cf3c9de7b5924a05cd1ace29e60b3903327
+82e573068bfe78a9650f40cb5b98df9b1e08d483)
 #### Date: 2018-03-15
  - **bugfix** openSUSE/fedora: ps check for container pid; fixed desktop logout issue, too.
  - structure change: don`t sleep 1 for setup; instead wait for it in CMD.sh resp. run su or init in setup
@@ -95,29 +102,33 @@
  - xinitrc: some cleanup
  - `--verbose`: power of moo
 
-## Version: 3.9.6.1  
+## Version: [3.9.6.1  ](https://github.com/mviereck/x11docker/tree/1e482bc9341a6c22771b3ba602edb847e25d6d82)
 #### Date: 2018-03-10
  - `--lang`: replace locale-gen with more general available localedef
  - `--tini`: check for docker-init in PATH, disable if missing ([#23](https://github.com/mviereck/x11docker/issues/23))
 
-## Version: 3.9.6    
+## Version: [3.9.6    ](https://github.com/mviereck/x11docker/tree/1e482bc9341a6c22771b3ba602edb847e25d6d82
+0a4166c020c9700e592c0d7600b4a8b5e9850222)
 #### Date: 2018-03-09
  - `--lang`: **new option** to set language locale in utf8, create it if missing.
 
-## Version: 3.9.5    
+## Version: [3.9.5    ](https://github.com/mviereck/x11docker/tree/0f0b138db7c2f3093511fae7583b34bc44db3423
+0f0b138db7c2f3093511fae7583b34bc44db3423
+9a86a235f82e900d83bb0bbd4e2b85db60c5335b)
 #### Date: 2018-03-06
  - `--keymap`: **new option** to set keyboard layout
 
-## Version: 3.9.4.2  
+## Version: [3.9.4.2  ](https://github.com/mviereck/x11docker/tree/4777416424b379dfc52240e8a32fe10bbef0a25f
+4777416424b379dfc52240e8a32fe10bbef0a25f)
 #### Date: 2018-03-06
  - store keyboard layout (xkb_keymap) in separate file, not in xinitrc. Set on all X servers. [#25](https://github.com/mviereck/x11docker/issues/25)
 
-## Version: 3.9.4.1  
+## Version: [3.9.4.1  ](https://github.com/mviereck/x11docker/tree/68a7a529b807f40d102842ebc3fe16ca3435b771)
 #### Date: 2018-03-06
  - `--pulseaudio`: **bugfix**/typo
  - share /etc/localtime with container to have the same time
 
-## Version: 3.9.4.0  
+## Version: [3.9.4.0  ](https://github.com/mviereck/x11docker/tree/fa043c37d029982ed44431032f37e05f5c5f0024)
 #### Date: 2018-03-05
  - `--pulseaudio` `--hostnet`: no fallback to alsa, use localhost IP instead
  - `--pulseaudio` `--no-internet`: fallback to `--alsa`
@@ -133,22 +144,24 @@
  - `--hostdisplay`: minor **bugfix**: Use correct display number to share /tmp/.X0-lock, only share if it exists
  - more verbose messages in waiting routines
 
-## Version: 3.9.3.2  
+## Version: [3.9.3.2  ](https://github.com/mviereck/x11docker/tree/f28e182de62f7f25a5458d6d1db28aee5f339eb3)
 #### Date: 2018-03-01
  - `--no-xtest`: disable extension XTEST. Default for most options.
  - openSUSE docker package misses init binary, show warnings for `--tini`, issue [#23](https://github.com/mviereck/x11docker/issues/23)
 
-## Version: 3.9.3.1  
+## Version: [3.9.3.1  ](https://github.com/mviereck/x11docker/tree/7883bb089dc1ea8c438ed7be123e3bfcbd4eded2)
 #### Date: 2018-03-01
  - fix XTEST warning messages
 
-## Version: 3.9.3    
+## Version: [3.9.3    ](https://github.com/mviereck/x11docker/tree/f28e182de62f7f25a5458d6d1db28aee5f339eb3
+7883bb089dc1ea8c438ed7be123e3bfcbd4eded2
+4f8cd878dcc44469bdb9afce2f91afce3abcda8a)
 #### Date: 2018-03-01
  - `--tini`: show warning for outdated docker versions without option `--init` and fall back to `--no-init`, issue [#23](https://github.com/mviereck/x11docker/issues/23)
  - `--xtest`: **new option** to enable X extension XTEST. Default for `--xdummy`, `--xvfb`, `--xpra`
  - `--pulseaudio` with `--net`: fallback to `--alsa`, disabling `--pulseaudio`
 
-## Version: 3.9.2.3  
+## Version: [3.9.2.3  ](https://github.com/mviereck/x11docker/tree/62e31a381b79b67a1eea9f84b629a849833249c0)
 #### Date: 2018-02-25
  - set container GID of video and audio to same as on host
  - cat docker daemon messages for startup error message
@@ -159,7 +172,7 @@
  - **bugfix** `--weston`/`--kwin`: wait for file creation of wayland socket, checking logfile is not enough
  - mywatch(): verbose output
 
-## Version: 3.9.2.2  
+## Version: [3.9.2.2  ](https://github.com/mviereck/x11docker/tree/699cdd4d4eb40846619233ef65edefe74e1246d0)
 #### Date: 2018-02-09
  - minor **bugfix** `--exe`: avoid possible hostexe options with basename for $Hostexebasename
  - minor **bugfix**: typo checking /tmp/.Xn-lock
@@ -167,38 +180,41 @@
  - **bugfix** checking free display number: race condition if starting two x11docker instances at same time, second one failed because display number already in use
  - plasmashell added to possible window managers
 
-## Version: 3.9.2.1  
+## Version: [3.9.2.1  ](https://github.com/mviereck/x11docker/tree/3c28c1b61596fbc8a7e2b3ea0bbbe75dbc320fc4)
 #### Date: 2018-01-29
  - correct date/year in changelog (issue [#21](https://github.com/mviereck/x11docker/issues/21))
  - finish(): minor **bugfix**: wrong warning although terminating bgpid was successfull
  - create /x11docker/environment to store and provide container environment variables
 
-## Version: 3.9.2    
+## Version: [3.9.2    ](https://github.com/mviereck/x11docker/tree/62e31a381b79b67a1eea9f84b629a849833249c0
+699cdd4d4eb40846619233ef65edefe74e1246d0
+3c28c1b61596fbc8a7e2b3ea0bbbe75dbc320fc4
+64556a1096470761e66f15c21b5054a6cba7a734)
 #### Date: 2018-01-21
  - **bugfix**: add groups video and audio if su is not used in container. /etc/group changes by dockerrc seem to be not regarded in that case.
  - finish(): more precise check with pid and name before killing background pids
 
-## Version: 3.9.1.9  
+## Version: [3.9.1.9  ](https://github.com/mviereck/x11docker/tree/f789a74ceab2f547b3d2939a5e23f21b32c0cd7c)
 #### Date: 2018-01-17
  - `--xpra`: if server crashes, use xpra option `--mmap=no` on restart
 
-## Version: 3.9.1.8  
+## Version: [3.9.1.8  ](https://github.com/mviereck/x11docker/tree/363351c54eeaad227c942bbe3eeb035085930580)
 #### Date: 2018-01-16
  - `--xpra`: stop x11docker if xpra server crashes multiple times
 
-## Version: 3.9.1.7  
+## Version: [3.9.1.7  ](https://github.com/mviereck/x11docker/tree/3b20fd795ac133b36702ed516e2e4efb1669f7d4)
 #### Date: 2018-01-15
  - `--gpu`: share /dev/vga_arbiter and /dev/nvidia*
 
-## Version: 3.9.1.6  
+## Version: [3.9.1.6  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-01-15
  - restart xpra server if it crashes (can happen with xpra 2.2, reason unknown)
 
-## Version: 3.9.1.5  
+## Version: [3.9.1.5  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-01-13
  - **bugfix** xpra: reconnect to server after timeout (60s) if switching to console
 
-## Version: 3.9.1.4  
+## Version: [3.9.1.4  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-01-12
  - `--help`: some usage updates
  - `--xorg`: create virtual framebuffer if no monitor is connected (headless server setup)
@@ -207,7 +223,7 @@
  - `--verbose` `--systemd`: hide error messages: Failed to add fd to store | Failed to set invocation ID | Failed to reset devices.list
  - `--systemd`: set global environment XAUTHORITY
 
-## Version: 3.9.1.3  
+## Version: [3.9.1.3  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-01-04
  - `--dbus-daemon`: set xhost +SI:localuser:$USER, needed for deepin
  - **bugfix** `--systemd`: global XAUTHORITY setting was wrong, removed at all
@@ -216,18 +232,20 @@
  - create fake homedir and softlinks to sharedirs in CMD.sh, base is /fakehome now
  - extension XTEST: more restrictive defaults
 
-## Version: 3.9.1.2  
+## Version: [3.9.1.2  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-28
  - `--sudouser`: root gets password `x11docker`, too
  - check environment variables in image and set them in x11docker.CMD.sh. Allows PATH of x11docker/trinity again.
  - **bugfix** parsing host XAUTHORITY if running from gksu
  - cut image command at `#`
 
-## Version: 3.9.1.1  
+## Version: [3.9.1.1  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-28
  - **bugfix** `--systemd`: directly share X socket as systemd can have issues with soft links
 
-## Version: 3.9.1    
+## Version: [3.9.1    ](https://github.com/mviereck/x11docker/tree/f789a74ceab2f547b3d2939a5e23f21b32c0cd7c
+363351c54eeaad227c942bbe3eeb035085930580
+3b20fd795ac133b36702ed516e2e4efb1669f7d4)
 #### Date: 2017-12-25
  - run in detached mode, drop mess of nohup/setsid/script
  - `--dbusdaemon`: dropped consolekit, not really useful
@@ -236,13 +254,13 @@
  - `--sys-admin`: deprecated thanks to `--tmpfs=`/run/lock
  - containersetup.sh collects most former `docker exec` commands from dockerrc
 
-## Version: 3.9.0.5  
+## Version: [3.9.0.5  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-21
  - add capability DAC_OVERRIDE if user switching is allowed -> needed to change /etc/sudoers if ro
  - **bugfix**: only create XDG_RUNTIME_DIR if not already existing
  - `--systemd`: adding `--tmpfs=`/run/lock allows to drop `--sys-admin` !
 
-## Version: 3.9.0.4  
+## Version: [3.9.0.4  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-20
  - docker run `--workdir=`/tmp, avoids issues with WORKDIR in image (seen with lirios/unstable)
  - **bugfix** `--dbus`: check for dbus-launch in x11docker.CMD.sh, not in dockerrc on host
@@ -251,7 +269,7 @@
  - run docker command with script -c to provide fake tty
  - change /tmp/fakehome to /home/fakehome
 
-## Version: 3.9.0.3  
+## Version: [3.9.0.3  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-17
  - switched back to /tmp/fakehome to avoid CHOWN and issues with `--sharedir`
  - drop `--cap-add` CHOWN
@@ -262,17 +280,17 @@
  - `--hostdisplay`: warning if host has no own cookie
  - avoid grey edge with Xwayland, Xaxis must be dividable by 8
 
-## Version: 3.9.0.2  
+## Version: [3.9.0.2  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-16
  - /etc/sudoers[.d/]: replace completly to avoid possible evil image setups
  - `--cap-add` CHOWN as default to allow /home/$Benutzer with `--sharedir`
 
-## Version: 3.9.0.1  
+## Version: [3.9.0.1  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-16
  - **bugfix**: `--systemd`: do not set $HOME globally, root may write into it
  - use /home/$Benutzer instead of /tmp/fakehome
 
-## Version: 3.9.0    
+## Version: [3.9.0    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-15
  - /etc/shadow: disable possible root password
  - `--dbusdaemon`: **new option** to run dbus system daemon and consolekit in container
@@ -282,15 +300,15 @@
  - /tmp/.ICE-unix created in dockerrc, root owned with 1777, needed for SESSION_MANAGER
  - `--rw`: deprecated, root file system is always r/w now due to `docker exec` in dockerrc
 
-## Version: V3.8.1)  
+## Version: [V3.8.1)  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-10
  - **bugfix** Ubuntu: avoid Wayland backend for Weston due to MIR issue [#19](https://github.com/mviereck/x11docker/issues/19)
 
-## Version: V3.8.1)  
+## Version: [V3.8.1)  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-10
  - `--xorg`: change Xorg to X. X is setuid wrapper for Xorg on Ubuntu 14.04
 
-## Version: V3.8.1)  
+## Version: [V3.8.1)  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-10
  - +iglx removed from X options, not present in older versions of X, and maybe security issue.
  - create user in dockerrc with `docker exec` instead of using createuser.sh
@@ -301,7 +319,7 @@
  - show image name and display in weston windows
  - **bugfix** `--runit`: add SYS_BOOT even with `--cap-default`
 
-## Version: 3.8.0    
+## Version: [3.8.0    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-12-04
  - `--sudouser`: create user with docker run options instead of createuser script
  - `--sudouser`: create /etc/sudoers.d/$Benutzer with docker exec in dockerrc
@@ -332,7 +350,8 @@
  - `--sudouser`: instead of empty password, user name is password now
  - changed container share folder /tmp/x11docker to /x11docker to avoid issues with `--tmpfs` /tmp
 
-## Version: 3.7.2    
+## Version: [3.7.2    ](https://github.com/mviereck/x11docker/tree/3b20fd795ac133b36702ed516e2e4efb1669f7d4
+3b20fd795ac133b36702ed516e2e4efb1669f7d4)
 #### Date: 2017-11-11
  - allow rw with `--volume=`/var/tmp, needed for trinity
  - **bugfix** for su on console: exec </dev/tty
@@ -341,7 +360,7 @@
  - `--nxagent`: shift+F11 toggles fullscreen
  - `--nxagent` on Mageia: only show warning about seamless mode instead of disabling it
 
-## Version: 3.7.1    
+## Version: [3.7.1    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-11-03
  - **bugfix** for gksudo and lxsudo
  - read host cookie with xauth if XAUTHORITY is empty, can happen with xdm
@@ -353,11 +372,11 @@
  - weston.ini: keyboard config setting on console
  - fedora: show alert for `--ipc`/`--trusted` due to missing extension security
 
-## Version: 3.7.0    
+## Version: [3.7.0    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-30
  - **new option** `--alsa`; use -wm for `--xephyr` and the likes; support more terminals and message dialogs
 
-## Version: 3.7.0    
+## Version: [3.7.0    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-30
  - auto-choose window manager in `--xephyr`/`--xorg`/`--weston-xwayland`/`--kwin-xwayland`/`--xwayland` except `--desktop` is set
  - `--alsa`: **new option** for ALSA sound
@@ -370,21 +389,21 @@
  - **bugfix** `--kwin`/`--kwin-xwayland`: set backend in compositor command, weston`s autodetection can fail
  - new function alertbox, outsourced from error(). yad, kaptain, kdialog, gxmessage, xterm: additional messagebox tools
 
-## Version: 3.6.3.9  
+## Version: [3.6.3.9  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-25
  - show error messages regardless of `--silent`
  - change "sudo" to "sudo -E", needed for OpenSUSE
  - code cleanup, some improved messages
 
-## Version: 3.6.3.8  
+## Version: [3.6.3.8  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-25
  - fedora: set `--ipc` and `--trusted` for `--hostdisplay` only
 
-## Version: 3.6.3.7  
+## Version: [3.6.3.7  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-25
  - **bugfix** `--hostdisplay` on fedora: use host cookie, custom cookie is rejected
 
-## Version: 3.6.3.6  
+## Version: [3.6.3.6  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-24
  - `--wmlist`: **new option** to retrieve list of window managers, used by x11docker-gui
  - `--gpu`: improved support in autochoosing mode
@@ -392,43 +411,43 @@
  - hardcoded xpra environment variables, parsing `xpra showconfig` takes too long
  - **bugfix** for `--pw=sudo`, issue with setsid
 
-## Version: 3.6.3.5  
+## Version: [3.6.3.5  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-24
  - **bugfix** xpra with host user root: set environment variables
  - dbus-launch for konsole and terminator, needed in dockerrc
 
-## Version: 3.6.3.4  
+## Version: [3.6.3.4  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-23
  - add /usr/sbin to PATH, needed on mageia for ip
  - **bugfix** `--pw=sudo`: `setsid sudo` fails, must use `sudo setsid`
 
-## Version: 3.6.3.3  
+## Version: [3.6.3.3  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-23
  - removed experimental Code
  - **bugfix** for `--wm` as root in xinitrc
 
-## Version: 3.6.3.2  
+## Version: [3.6.3.2  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-23
  - remove debugging `set -x` in xinitrc
 
-## Version: 3.6.3.1  
+## Version: [3.6.3.1  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-23
  - **bugfix**: don`t use su $USER in xinitrc
  - split X server command with \backslash in multiple lines
 
-## Version: 3.6.3    
+## Version: [3.6.3    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-20
  - **new option** `--no-internet`; adjustments for CentOS/RHEL, Arch and Manjaro
 
-## Version: 3.6.2    
+## Version: [3.6.2    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-10-10
  - **new option** `--xfishtank`; better SELinux support; `--scale` and `--size` for `--xorg`
 
-## Version: 3.6.1    
+## Version: [3.6.1    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-08-15
  - **new option**s `--stdout` and `--stderr`; support stdin
 
-## Version: 3.6.0    
+## Version: [3.6.0    ](https://github.com/mviereck/x11docker/tree/4d619bfbcae605b25ee93778936245019a8a7020)
 #### Date: 2017-08-12
  - workaround: disabling SELinux for container until solution for sharing unix socket is found.
  - compare: http://www.projectatomic.io/blog/2015/06/using-volumes-with-docker-can-cause-problems-with-selinux/
@@ -469,16 +488,16 @@
  - `--fullscreen`. Set fullscreen screen size for windowed options (xpra),too
  - allow root to start x11docker, use $(logname) for X server and as container user
 
-## Version: 3.5.11   
+## Version: [3.5.11   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-07-12
  - pull image if not available before calling `docker run`
 
-## Version: 3.5.10   
+## Version: [3.5.10   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-07-12
  - regard ENTRYPOINT in dockerrc
  - regard entrypoint of image in dockerrc
 
-## Version: 3.5.9    
+## Version: [3.5.9    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-07-09
  - `--user`: **bugfix** parsing custom gid, gid was set to username
  - `--home` with `--user=`(unknown): only show warning (instead of error) not creating persistent home
@@ -486,7 +505,7 @@
  - do not set `--read-only` if `--user=`0
  - minor **bugfix**: chown x11docker_CMD to host user to avoid permission issues in $Sharefolder
 
-## Version: 3.5.8    
+## Version: [3.5.8    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-06-07
  - `--nxagent`: **bugfix** due to update? must set nxagent -ac (=xhost +) temporary to allow xinit
  - `--kwin-native`: always share Wayland (`--sharewayland` `--waylandenv` `--dbus`)
@@ -498,7 +517,8 @@
  - Xdummy script in $Cachefolder forked from https://xpra.org/trac/browser/xpra/trunk/src/scripts/xpra_Xdummy
  - calculate VideoRam in xorg.xdummy.conf (instead of fat hardcoded 256000 kb)
 
-## Version: 3.5.7    
+## Version: [3.5.7    ](https://github.com/mviereck/x11docker/tree/7776de0f3128a679239037567626cca09f472ee5
+7776de0f3128a679239037567626cca09f472ee5)
 #### Date: 2017-06-28
  - usage info for HTML5 web application setup
  - redirect verbose output to &3 to show it in subshells, too, and to avoid possible collision with read < <()
@@ -509,7 +529,7 @@
  - share X socket to /tmp, create .X11-unix in dockerrc and softlink socket. This avoids writeable X11-unix in $Cachedir.
  - `--setwaylandenv`: env now set in dockerrc instead of docker command
 
-## Version: 3.5.6    
+## Version: [3.5.6    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-06-21
  - `--sudouser`: reincarnated option to give sudo without password to container user.
  - docker command one-liner extended to dockerrc. dockerrc creates x11docker_CMD. Can always extract image command without additional password prompt and create some environment.
@@ -523,15 +543,15 @@
  - **bugfix** typo preventing start of `--kwin` and `--kwin-native` (-width instead of `--width`)
  - warning with hint to use `--xpra-xwayland` if `--scale` is used with `--weston-xwayland`.
 
-## Version: 3.5.5.2  
+## Version: [3.5.5.2  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-06-10
  - update usage info for `--xpra` and `--xpra-xwayland`
 
-## Version: 3.5.5.1  
+## Version: [3.5.5.1  ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-06-10
  - minor **bugfix** in `--auto` always choosing `--xorg`
 
-## Version: 3.5.5    
+## Version: [3.5.5    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-06-09
  - autochoose xpra-desktop if xephyr is missing
  - improved part: check virtual screen size
@@ -539,12 +559,13 @@
  - desktop mode for xpra if `--wm` is given
  - always set XDG_RUNTIME_DIR=/tmp as some apps may expect it
 
-## Version: 3.5.4    
+## Version: [3.5.4    ](https://github.com/mviereck/x11docker/tree/85f1f29855090d2dba9328e9184f23365f4f1a6f
+85f1f29855090d2dba9328e9184f23365f4f1a6f)
 #### Date: 2017-06-02
  - set rw access for /dev/dri ([#12](https://github.com/mviereck/x11docker/issues/12))
  - disable extension XTEST if using wm from host (to avoid abuse of context menu of openbox and the like)
 
-## Version: 3.5.3    
+## Version: [3.5.3    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-05-29
  - `--pulseaudio`: get and use IP of container instead of docker0 IP range ([#11](https://github.com/mviereck/x11docker/issues/11)), disabling TCP module on exit
  - changed `--volume` to `--sharedir` to avoid confusion
@@ -554,16 +575,18 @@
  - set read-only for /dev/dri on `--gpu`
  - `--security-opt=no-new-privileges` added to docker run
 
-## Version: 3.5.2    
+## Version: [3.5.2    ](https://github.com/mviereck/x11docker/tree/6227a1eebc5b63df305822896d7360a14440caf4
+6227a1eebc5b63df305822896d7360a14440caf4)
 #### Date: 2017-05-22
  - `--volume`: **new option** to share host folders
 
-## Version: 3.5.1    
+## Version: [3.5.1    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-05-19
  - user creation with ``--addgroup` video` to support pre-systemd and kdeneon gpu support
  - create /tmp/.X11-unix with 1777
 
-## Version: 3.5.0    
+## Version: [3.5.0    ](https://github.com/mviereck/x11docker/tree/363351c54eeaad227c942bbe3eeb035085930580
+363351c54eeaad227c942bbe3eeb035085930580)
 #### Date: 2017-05-17
  - avoid Terminal window with `--no-password`
  - `--env`: regard whitespaces, use \n to divide entrys
@@ -591,11 +614,21 @@
  - dismissed `--hostuser` `--sudouser`, effect of `--hostuser` is default now, `--sudouser` not possible due to `--cap-drop=`ALL
  - `--gpu`: only share `--device=`/dev/dri instead of listing all files in it
 
-## Version: 3.2.1    
+## Version: [3.2.1    ](https://github.com/mviereck/x11docker/tree/65305faba992415b8b255a4fac7e89c4417e5a1e
+85f1f29855090d2dba9328e9184f23365f4f1a6f
+57e34236dca42e05434a304c77f61202d678398a
+4aaa1cf3c9de7b5924a05cd1ace29e60b3903327
+82e573068bfe78a9650f40cb5b98df9b1e08d483
+0a4166c020c9700e592c0d7600b4a8b5e9850222
+9a86a235f82e900d83bb0bbd4e2b85db60c5335b
+4777416424b379dfc52240e8a32fe10bbef0a25f
+4777416424b379dfc52240e8a32fe10bbef0a25f
+68a7a529b807f40d102842ebc3fe16ca3435b771
+7883bb089dc1ea8c438ed7be123e3bfcbd4eded2)
 #### Date: 2017-05-05
  - minor **bugfix**: `--scale` with `--xpra-xwayland` under X without Wayland failed
 
-## Version: 3.2.0    
+## Version: [3.2.0    ](https://github.com/mviereck/x11docker/tree/4777416424b379dfc52240e8a32fe10bbef0a25f)
 #### Date: 2017-05-04
  - `--scale`: **new option** for xpra and weston
  - `--rotate`: **new option** for weston
@@ -604,24 +637,24 @@
  - **bugfix**: missing error() in xinitrc
  - allow MIT-SHM for `--exe`
 
-## Version: 3.1.16   
+## Version: [3.1.16   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-05-03
  - **bugfix** `--xpra-wayland` in check for WAYLAND_DISPLAY
 
-## Version: 3.1.15   
+## Version: [3.1.15   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-05-02
  - minor **bugfix** in choosing terminal, replace $Waylandterminal with $Terminal in re-check
  - minor **bugfix** xtermrc and xinitrc: check if $Dockerpidfile is not empty
  - faster startup for `--xpra-xwayland`, `--weston-xwayland`, `--kwin` and `--kwin-xwayland`
  - code cleanup
 
-## Version: 3.1.14   
+## Version: [3.1.14   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-05-01
  - checkorphaned() uses container names instead of numbers
  - **bugfix** `--exe`: reliable kill $Hostexe, even with `--weston`* and `--kwin`*
  - **bugfix**: remove : and / from image name in $Containername
 
-## Version: 3.1.13   
+## Version: [3.1.13   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-30
  - Improved multimonitor support (still missing: multihead)
  - **bugfix**: redirection of stderr wihout cat, avoids broken pipe on ctrl-c in ubuntu and opensuse
@@ -629,7 +662,7 @@
  - removed $Cidfile at all, cleanup hint in finish() with $Containername
  - avoid root ownership for $Dockerlogfile and $Dockerpidfile
 
-## Version: 3.1.12   
+## Version: [3.1.12   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-29
  - clean up confusion with x11docker.log
  - minor **bugfix**: include warning() in xinitrc
@@ -640,65 +673,72 @@
  - use id -g instead of $Benutzer for group name
  - add lsb-release -ds to verbose output
 
-## Version: 3.1.11   
+## Version: [3.1.11   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-29
  - disabled $Cidfile as not important and due to [#10](https://github.com/mviereck/x11docker/issues/10)
 
-## Version: 3.1.10   
+## Version: [3.1.10   ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-28
  - minor **bugfix**: check for xenial instead of 16.04/xvfb
  - **regression** fix: set XPRA_XSHM=0 on Shareipc=no
  - disable `--desktop-scaling` in xpra, not supported before xpra v1.x
 
-## Version: 3.1.9    
+## Version: [3.1.9    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-27
  - don`t create Cacherootfolder in variable definitions
  - check for Xvfb on Ubuntu 16.04
 
-## Version: 3.1.8    
+## Version: [3.1.8    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-25
  - Add advice for `--xorg` how to setup xserver-xorg-legacy
 
-## Version: 3.1.7    
+## Version: [3.1.7    ](https://github.com/mviereck/x11docker/tree/733b8f9b9228d5fa3b167a4771976bcc610ac0de
+733b8f9b9228d5fa3b167a4771976bcc610ac0de
+62e31a381b79b67a1eea9f84b629a849833249c0
+62e31a381b79b67a1eea9f84b629a849833249c0)
 #### Date: 2017-04-25
  - `--xpra` and `--xdummy` now use Xvfb if installed. Compare #9, Xdummy cannot be used on Ubuntu 16.04 due to xorg.conf location
  - set $Windowmanager in auto choosing X server if switching to desktop windows
 
-## Version: 3.1.6    
+## Version: [3.1.6    ](https://github.com/mviereck/x11docker/tree/1e482bc9341a6c22771b3ba602edb847e25d6d82
+1e482bc9341a6c22771b3ba602edb847e25d6d82
+f28e182de62f7f25a5458d6d1db28aee5f339eb3
+4f8cd878dcc44469bdb9afce2f91afce3abcda8a)
 #### Date: 2017-04-21
  - **bugfix** 2 `--nxagent`: don`t close nxagent on every call of nxclient
 
-## Version: 3.1.5    
+## Version: [3.1.5    ](https://github.com/mviereck/x11docker/tree/363351c54eeaad227c942bbe3eeb035085930580
+363351c54eeaad227c942bbe3eeb035085930580)
 #### Date: 2017-04-20
  - **bugfix** `--nxagent`: don`t close nxagent on every call of nxclient
 
-## Version: 3.1.4    
+## Version: [3.1.4    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-19
  - `--nxagent` supports untrusted cookies
  - **bugfix**: don`t set dpi if xdpyinfo fails
 
-## Version: 3.1.3    
+## Version: [3.1.3    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-18
  - `--nxagent` cookie workaround as it ignores XAUTHORITY on option -auth
  - `--nxagent` workaround to terminate on pressing window close button -> fake nxclient
  - **bugfix** typo in finish() looking for docker pid
 
-## Version: 3.1.2    
+## Version: [3.1.2    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-18
  - `--nxagent` sets right keyboard layout, thanks to Ulrich!
 
-## Version: 3.1.1    
+## Version: [3.1.1    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-18
  - `--nxagent` now supports `--size`, `--fullscreen` and `--clipboard`, thanks to Ulrich Sibiller from Arctica!
  - check dpi from host and set this to new X server
  - xpra xmessage to be patient
  - disabled keyboard adjusting for `--nxagent`
 
-## Version: 3.1.0    
+## Version: [3.1.0    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-16
  - `--nxagent`: new X server option
 
-## Version: 3.0.0    
+## Version: [3.0.0    ](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2017-04-15
  - Wayland support.
  - code cleanup
