@@ -7,13 +7,13 @@
 ## Version: [3.9.8.5](https://github.com/mviereck/x11docker/tree/6227a1eebc5b63df305822896d7360a14440caf4)
 #### Date: 2018-04-05
  - `finish()`: run `docker stop` before creating `timetosaygoodbye` for more graceful shutdown [#37](https://github.com/mviereck/x11docker/issues/37)
- - minor **bugfixes** (`XAUTHORITY` in setup script, `User` in systemd journal service)
+ - minor **bugfixes** (correct `XAUTHORITY` in setup script, disable `User` in systemd journal service)
 
 ## Version: [3.9.8.4](https://github.com/mviereck/x11docker/tree/d74fa2defceb538d8c9e90932d48f23cae0f102b)
 #### Date: 2018-04-04
- - `--workdir`: **new option**
- - `--systemd`/`--dbus-system`: changed `su` command to remove sh from pstree
- - **bugfix** user entry in `/etc/group`
+ - `--workdir`: **new option** to set working directory different from `HOME`. ([#36](https://github.com/mviereck/x11docker/issues/36))
+ - `--systemd`/`--dbus-system`: changed `su` command to remove `sh` from pstree
+ - **bugfix** user group entry in `/etc/group`
 
 ## Version: [3.9.8.3](https://github.com/mviereck/x11docker/tree/6ce5d2cbd7a14556723a3c8e1163988f2ddda8ce)
 #### Date: 2018-04-04
@@ -21,7 +21,7 @@
 
 ## Version: [3.9.8.2](https://github.com/mviereck/x11docker/tree/a58e6808254ce78eb528010584ff9d7ef9b8aa26)
 #### Date: 2018-04-03
- - disable entrypoint `tini` if x11docker already runs an init system (default: tini from docker).
+ - disable entrypoint `tini` if x11docker already runs an init system (default: `tini` from docker).
 
 ## Version: [3.9.8.1](https://github.com/mviereck/x11docker/tree/75f79c9888beee08ca08c42c5f70feaa0f02cd30)
 #### Date: 2018-04-03
@@ -36,7 +36,7 @@
 
 ## Version: [3.9.7.9](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-03-31
- - Store parsed parts of $Imagecommand in `` to allow constructs like:  `sh -c "cd /etc ; xterm"`
+ - Store parsed parts of $Imagecommand in single backticks to allow constructs like:  `sh -c "cd /etc ; xterm"`
  - **bugfix**: add `--rm` to docker run for environment check
 
 ## Version: [3.9.7.8](https://github.com/mviereck/x11docker/tree/4d619bfbcae605b25ee93778936245019a8a7020)
@@ -57,13 +57,13 @@
 #### Date: 2018-03-30
  - `--dbus-system`: drop consolekit
  - `--sysvinit`,`--openrc`: disable getty in inittab instead of overwriting inittab with shared volume
- - `--sysvinit`: change rc.local in setupscript instead of overwriting it with shared volume
+ - `--sysvinit`: change `rc.local` in setupscript instead of overwriting it with shared volume
  - `--openrc`, `--runit`: create service in setupscript, drop some more capabilities
 
 ## Version: [3.9.7.4](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-03-26
  - `--sysvinit`: **new option** for init system SysVinit in container. Tested with devuan.
- - `--pulseaudio`: **bugfix**: need to set environment variable `PULSE_SERVER`
+ - **bugfix** `--pulseaudio`: need to set environment variable `PULSE_SERVER`
  - `--runit`: add softlink for X socket in `x11docker.CMD.sh` for compatibility with `runit` on debian
 
 ## Version: [3.9.7.3](https://github.com/mviereck/x11docker/tree/57e34236dca42e05434a304c77f61202d678398a)
@@ -78,9 +78,9 @@
  - `--add`: **new option** to add a host command in `xinitrc`
  - consolekit: enable and use automatically for `--dbus-system`, `--openrc`, `--runit`
  - `--dbus`: enable automatically for `--runit`, `--openrc`
- - `mywatch()`: watch again, now without `sh -c`
- - `--debug`: **new option** to set -x in all scripts showing code lines while executed.
- - `--sharewayland`, `--waylandenv`: **deprecated**, not needed for anything anymore. `--wayland` does the job.
+ - `mywatch()`: use `watch` again, now without `sh -c`
+ - `--debug`: **new option** to set `-x` in all scripts showing code lines while executed.
+ - **deprecated** `--sharewayland`, `--waylandenv`: not needed for anything anymore. `--wayland` does the job.
  - `--help`: `usage()` cleanup
 
 ## Version: [3.9.7.1](https://github.com/mviereck/x11docker/tree/4aaa1cf3c9de7b5924a05cd1ace29e60b3903327)
@@ -91,9 +91,9 @@
 ## Version: [3.9.7](https://github.com/mviereck/x11docker/tree/82e573068bfe78a9650f40cb5b98df9b1e08d483)
 #### Date: 2018-03-15
  - **bugfix** openSUSE/fedora: `ps` check for container pid; fixed desktop logout issue, too.
- - structure change: don`t `sleep 1` for setup; instead wait for it in x11docker.CMD.sh resp. run su or init in setup
- - SSH with `--hostdisplay`: set `--hostipc`, `--hostnet` and `--trusted`. Do not X-generate cookie, bake self.
- - **bugfix** `---weston`/-weston-xwayland: do not start drm backend if started within X without `DISPLAY` -> crashed host X
+ - structure change: dont `sleep 1` for setup; instead wait for it in `x11docker.CMD.sh` resp. run `su` or `init` in setup
+ - SSH with `--hostdisplay`: set `--hostipc`, `--hostnet` and `--trusted`. Do not X-generate cookie, bake it myself.
+ - **bugfix** `---weston`/`--weston-xwayland`: do not start drm backend if started within X without `DISPLAY` -> crashed host X
  - **bugfix**: regard ssh session, assume tty if `DISPLAY` is empty
  - **bugfix**: `--hostdisplay`: don`t set keymap
  - xinitrc: some cleanup
@@ -101,8 +101,8 @@
 
 ## Version: [3.9.6.1](https://github.com/mviereck/x11docker/tree/1e482bc9341a6c22771b3ba602edb847e25d6d82)
 #### Date: 2018-03-10
- - `--lang`: replace locale-gen with more general available localedef
- - `--tini`: check for `docker-init` in `PATH`, disable if missing ([#23](https://github.com/mviereck/x11docker/issues/23))
+ - `--lang`: replace `locale-gen` with more general available `localedef`
+ - `--tini`: check for `docker-init` in `PATH`, disable option if missing ([#23](https://github.com/mviereck/x11docker/issues/23))
 
 ## Version: [3.9.6](https://github.com/mviereck/x11docker/tree/0a4166c020c9700e592c0d7600b4a8b5e9850222)
 #### Date: 2018-03-09
@@ -123,7 +123,7 @@
 
 ## Version: [3.9.4.0](https://github.com/mviereck/x11docker/tree/fa043c37d029982ed44431032f37e05f5c5f0024)
 #### Date: 2018-03-05
- - `--pulseaudio` `--hostnet`: no fallback to alsa, use localhost IP instead
+ - `--pulseaudio` `--hostnet`: no fallback to `--alsa`, use localhost IP instead
  - `--pulseaudio` `--no-internet`: fallback to `--alsa`
  - clean up error message on docker startup failure, remove multiple error lines
  - `--systemd`: **bugfix**: terminate x11docker if systemd startup fails
