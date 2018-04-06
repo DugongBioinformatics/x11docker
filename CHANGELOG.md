@@ -1,3 +1,7 @@
+
+## Version: [3.9.9](https://github.com/mviereck/x11docker/tree/)
+#### Date: 2018-04-06
+ - removed `--security-opt=no-new-privileges` for -systemd/`--sysvinit`/`--runit`/`--openrc`. (undo some changes from V3.9.8.1). Will be reintroduced after further checks, caused issues with deepin and cinnamon.
  - `--env`: set environment variables in docker command, too. Makes them available with `docker exec`, too.
 
 ## Version: [3.9.8.5](https://github.com/mviereck/x11docker/tree/6227a1eebc5b63df305822896d7360a14440caf4)
