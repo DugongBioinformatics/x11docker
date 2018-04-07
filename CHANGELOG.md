@@ -296,9 +296,8 @@
  - **deprecated**: `--rw`, root file system is always r/w now due to `docker exec` in dockerrc
  - **bugfix** Ubuntu: avoid Wayland backend for Weston due to MIR issue [#19](https://github.com/mviereck/x11docker/issues/19)
  - `--xorg`: change Xorg to X. X is setuid wrapper for Xorg on Ubuntu 14.04
- - +iglx removed from X options, not present in older versions of X, and maybe security issue.
+ - `--xorg`: +iglx removed from X options, not present in older versions of X, and maybe security issue.
  - create user in dockerrc with `docker exec` instead of using createuser.sh
- - `--xorg`: removed +iglx from options, not supported on older X versions
  - **new option** `--openrc` for init system OpenRC in container
  - **new option** `--sharecgroup` to share /sys/fs/cgroup. default for `--systemd`.
  - create /var/lib/dbus in dockerrc to avoid dbus errors with init systems
@@ -506,7 +505,7 @@
  - usage info for HTML5 web application setup
  - redirect verbose output to &3 to show it in subshells, too, and to avoid possible collision with read < <()
  - `--env`: set custom environment variables in dockerrc instead of in docker run
- - removed unix in $Newxenv for DISPLAY to make xpra ssh setup easier
+ - removed `unix` in $Newxenv for DISPLAY to make xpra ssh setup easier
  - Xdummy-Xwayland: new X server to provide `--gpu` for `--xdummy` based on weston, xwayland and xdotool
  - always enable extension Xtest on `--xdummy` to allow xpra access
  - share X socket to /tmp, create .X11-unix in dockerrc and softlink socket. This avoids writeable X11-unix in $Cachedir.
@@ -591,7 +590,7 @@
  - **new option**`--user` to set user to use (name or uid, non-existing uids possible. default: host user)
  - reduce /etc/passwd and /etc/group to container user and groups user and videp only (except root, keeps whole files).
  - creating container user similar to host user with docker run option `--user` and custom /etc/passwd instead of script createuser.
- - dismissed `--hostuser` `--sudouser`, effect of `--hostuser` is default now, `--sudouser` not possible due to `--cap-drop=`ALL
+ - **removed** `--hostuser` `--sudouser`, effect of `--hostuser` is default now, `--sudouser` not possible due to `--cap-drop=`ALL
  - `--gpu`: only share `--device=`/dev/dri instead of listing all files in it
 
 ## Version: [3.2.1](https://github.com/mviereck/x11docker/tree/7600e599e757398d2e7ca3f53d4567f9286e31bb)
@@ -713,24 +712,18 @@
  - `--xdummy` regards `--size`
  - x11docker_CMD checks if ps is available
  - `--wm` changed, autochoosing no longer default
- - `--desktop` dismissed
  - old `--env` now is called `--showenv`
  - **new option** `--env`: set custom envionment variables
  - **new option**`--dbus`: run image command with `dbus-launch`
  - `chmod 1777 /tmp/X11-unix` to allow creation of X sockets in container
  - `--verbose` output much more reliebalenow, tail improved
  - use prefix unix for `DISPLAY` to disable `MIT_SHM` instead using other environment variables
- - `--virtualgl` dismissed
- - `--dockerenv` dismissed
- - `--xpra-image` `--xorg-image` `--xdummy-image` dismissed
- - `--tcp` `--tcpxsocket` `--xsocket` dismissed
+ - **removed** `--virtualgl`, `--dockerenv`, `--xpra-image`, `--xorg-image`, `--xdummy-image`, `--tcp` `--tcpxsocket` `--xsocket`, `--glamor`, `--sharegpu`, `--desktop`
  - **new option**s `--weston`, `--wayland`: for pure Wayland applications
  - `--xpra-xwayland`: new X server option
  - create dektop starter with basename instead of $0
  - createuser: start with `--user=`0 to allow useradd and su
  - **new option**`--setwaylandenv`: setting environment variables for toolkits like QT and GTK to use wayland
- - dismissed `--glamor`, now always enabled.
- - dismissed `--sharegpu`: same is done with `--gpu`
  - `--nothing`: Provide no X or Wayland server
  - `--sharewayland`: Share host wayland socket and set WAYLAND_DISPLAY
  - reverse order of killing of bgpids in finish(),last one first, to catch possible further output with tail -F
