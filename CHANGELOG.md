@@ -11,12 +11,13 @@
 ## Version: [3.9.9](https://github.com/mviereck/x11docker/tree/)
 #### Date: 2018-04-06
  - Removed `--security-opt=no-new-privileges` for `--systemd`/`--sysvinit`/`--runit`/`--openrc`. (Undoes some changes from V3.9.8.1). Will be reintroduced after further checks, caused issues with `x11docker/deepin` and `x11docker/cinnamon`.
- - `--env`: set environment variables in docker command, too. Makes them available with `docker exec`, too.
+ - `--env`: set environment variables in `docker run`, too. Makes them available within `docker exec`.
 
 ## Version: [3.9.8.5](https://github.com/mviereck/x11docker/tree/6227a1eebc5b63df305822896d7360a14440caf4)
 #### Date: 2018-04-05
  - `finish()`: run `docker stop` before creating `timetosaygoodbye` for more graceful shutdown [(#37)](https://github.com/mviereck/x11docker/issues/37)
- - minor **bugfixes** (correct `XAUTHORITY` in setup script, disable `User` in systemd journal service)
+ - **bugfix** correct `XAUTHORITY` in setup script
+ - **bugfix** disable `User` in systemd journal service
 
 ## Version: [3.9.8.4](https://github.com/mviereck/x11docker/tree/d74fa2defceb538d8c9e90932d48f23cae0f102b)
 #### Date: 2018-04-04
